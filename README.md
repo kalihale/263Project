@@ -40,5 +40,6 @@ By Kali Hale and Aaron Jimenez
     
 ## Resources
 * [memory_profiler](https://www.geeksforgeeks.org/monitoring-memory-usage-of-a-running-python-program/)
+* [IntelliJ profiler tutorial](https://www.youtube.com/watch?v=OQcyAtukps4)
 
 
