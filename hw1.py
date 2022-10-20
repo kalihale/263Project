@@ -4,6 +4,7 @@
 import random
 import matplotlib.pyplot as plt
 import numpy as np
+import memory_analyze
 
 def PLA(vecs, problemPart):
     # ／(^ㅅ^)＼ Generate w and vectors
