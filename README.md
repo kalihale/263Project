@@ -37,3 +37,7 @@ By Kali Hale and Aaron Jimenez
     * Memory: 32 GB DDR4
     * GPU: Nvidia RTX 3060
     * OS: Ubuntu 20.04 (WSL2)
+    
+## Resources
+
+
