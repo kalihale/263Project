@@ -1,3 +1,11 @@
+# CMPSC 263 Project
+
+By Kali Hale and Aaron Jimenez
+
+## Tests to run
+
+- Run Perceptron code in Python, Java, and C++
+   + Compare memory used, runtime, number of methods on stack, and number of operations
 
 ## Computer Specification
 * Comp #1
