@@ -39,5 +39,6 @@ By Kali Hale and Aaron Jimenez
     * OS: Ubuntu 20.04 (WSL2)
     
 ## Resources
+* [memory_profiler](https://www.geeksforgeeks.org/monitoring-memory-usage-of-a-running-python-program/)
 
 
