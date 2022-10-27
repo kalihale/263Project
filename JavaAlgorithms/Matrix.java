@@ -1,5 +1,7 @@
+package JavaAlgorithms;
+
 /** ／(^ㅅ^)＼
- * @file Matrix.java
+ * @file JavaAlgorithms.Matrix.java
  * @author Kali Hale
  * @version 1.0
  *

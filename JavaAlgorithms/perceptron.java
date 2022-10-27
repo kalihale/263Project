@@ -1,3 +1,7 @@
+package JavaAlgorithms;
+
+import JavaAlgorithms.Matrix;
+
 /** ／(^ㅅ^)＼
  * @filename Perceptron
  * @author Kali Hale
