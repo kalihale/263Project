@@ -45,7 +45,6 @@ def mergeLists(lst, start1, end1, start2, end2):
     return count
 
 def pivotArr(pivot, arr, left, right, comparisons):
-    # TODO
     temp = arr[right]
     arr[right]= arr[pivot]
     arr[pivot] = temp
