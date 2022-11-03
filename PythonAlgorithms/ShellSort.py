@@ -8,6 +8,6 @@ def ShellSort(lst: list) -> int:
         for i in range(increment):
             count += InsertionSort.insertionSortModified(lst, i, increment)
         
-        count -= 1
+        passes -= 1
     
     return count
