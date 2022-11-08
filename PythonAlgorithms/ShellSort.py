@@ -1,6 +1,8 @@
 from math import log
 import InsertionSort
-def ShellSort(lst: list) -> int:
+
+
+def shellSort(lst: list) -> int:
     count = 0
     passes = int(log(len(lst))/log(2))
     while passes >= 1:

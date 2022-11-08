@@ -4,3 +4,6 @@ PartDPLA.jpg
 PartEPLA.jpg
 __pycache__/memory_analyze.cpython-38.pyc
 PythonAlgorithms/__pycache__/BubbleSort.cpython-39.pyc
+PythonAlgorithms/main.py
+PythonAlgorithms/__pycache__/BubbleSort.cpython-38.pyc
+*.pyc

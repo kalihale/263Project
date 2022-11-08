@@ -1,0 +1,20 @@
+ncalls,tottime,percall,cumtime,percall,filename:lineno(function)
+2,0.000,0.000,0.000,0.000,D:\Users\rocea\anaconda3\envs\pytorch\lib\abc.py:96(__instancecheck__)
+7/2,0.000,0.000,0.000,0.000,D:\Users\rocea\anaconda3\envs\pytorch\lib\abc.py:100(__subclasscheck__)
+1,0.000,0.000,0.000,0.000,D:\Users\rocea\anaconda3\envs\pytorch\lib\_collections_abc.py:302(__subclasshook__)
+6,0.000,0.000,0.000,0.000,D:\Users\rocea\anaconda3\envs\pytorch\lib\_collections_abc.py:392(__subclasshook__)
+1,8.074,8.074,8.074,8.074,d:\Users\rocea\Desktop\Project\263Project\PythonAlgorithms\BubbleSort.py:2(bubbleSort)
+10515,0.003,0.000,0.004,0.000,D:\Users\rocea\anaconda3\envs\pytorch\lib\random.py:250(_randbelow_with_getrandbits)
+1,0.004,0.004,0.009,0.009,D:\Users\rocea\anaconda3\envs\pytorch\lib\random.py:315(sample)
+2,0.000,0.000,0.000,0.000,{built-in method _abc._abc_instancecheck}
+7/2,0.000,0.000,0.000,0.000,{built-in method _abc._abc_subclasscheck}
+1,0.000,0.000,0.000,0.000,{method 'disable' of '_lsprof.Profiler' objects}
+13847,0.001,0.000,0.001,0.000,{method 'getrandbits' of '_random.Random' objects}
+1,0.000,0.000,0.000,0.000,{built-in method math.ceil}
+1,0.000,0.000,0.000,0.000,{built-in method math.log}
+10515,0.000,0.000,0.000,0.000,{method 'bit_length' of 'int' objects}
+10000,0.001,0.000,0.001,0.000,{method 'add' of 'set' objects}
+2,0.000,0.000,0.000,0.000,{built-in method builtins.isinstance}
+2,0.000,0.000,0.000,0.000,{built-in method builtins.len}
+
+
