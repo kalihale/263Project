@@ -8,9 +8,40 @@
 #include <cmath>
 #include <random>
 
+template <typename T>
 
 class Sorts {
 public:
+    struct Node {
+        T data;
+        struct Node* next = nullptr;
+    };
+
+    T* list;
+    Node* buckets;
+
+    class GenericCombineBuckets {
+    public:
+        T* list;
+        Node* buckets;
+        // ／(^ㅅ^)＼ buckets is an array of starting nodes for linked lists
+        //           list is the full array of elements
+        //           listlen is the length of the list
+        //           numBuckets is the number of linkedlists in buckets
+        void combineBuckets(T* list, Node* buckets, int listlen, int numBuckets)
+        {
+            this->list = list;
+            this->buckets = buckets;
+            int j = 0;
+            for(int i = 0; i < numBuckets; ++i) {
+                while(buckets[i]) {
+                    this->list[j] = (T) buckets[i].data;
+                    buckets[i] = buckets[i].next;
+                    j++;
+                }
+            }
+        }
+    };
     static int bubbleSort(int* list, int listLen) {
         int count = 0;
         int numberOfPairs = listLen;
@@ -62,7 +93,7 @@ public:
             int newElement = list[j];
             int location = j - increment;
             count++;
-            while (location >= 0 && list[location] > newElement && location + increment < list.length)
+            while (location >= 0 && list[location] > newElement && location + increment < listLen)
             {
                 list[location + increment] = list[location];
                 location = location - increment;
@@ -89,12 +120,12 @@ public:
 
     static int radixSort(int* list, int listLen, int keySize) {
         //  <@  Create buckets
-        LinkedList<Integer>[] buckets = new LinkedList[10];
+        Node* buckets = new Node[10];
         GenericCombineBuckets gcb = new GenericCombineBuckets();
         //  <@  Initialize linkedlists in array "buckets"
-        for(int i = 0; i < buckets.length; i++)
+        for(int i = 0; i < buckets->length; i++)
         {
-            buckets[i] = new LinkedList<>();
+            buckets[i] = new Node();
         }
         //  <@  Initialize shift at 1
         int shift = 1;
@@ -104,9 +135,9 @@ public:
         for(int i = 1; i <= keySize; i++)
         {
             //  <@  For the entire list, sort the digit in question into buckets 0-9
-            for(int j = 0; j < list.length; j++)
+            for(int j = 0; j < listLen; j++)
             {
-                buckets[(list[j] / shift) % 10].add(list[j]);
+                buckets[(list[j] / shift) % 10].next = new Node{list[j], nullptr};
             }
             //  <@  Combine the buckets (using a generic class)
             //      Multiply shift by 10
@@ -118,12 +149,12 @@ public:
 
     static std::string* radixSort(std::string* list, int listLen, int keySize) {
         //  <@  Create buckets
-        LinkedList<String>[] buckets = new LinkedList[26];
+        Node* buckets = new Node[26];
         GenericCombineBuckets gcb = new GenericCombineBuckets();
         //  <@  Initialize
-        for(int i = 0; i < buckets.length; i++)
+        for(int i = 0; i < 26; i++)
         {
-            buckets[i] = new LinkedList<>();
+            buckets[i] = new Node();
         }
         //  <@  Initialize shift
         int shift = 1;
@@ -131,7 +162,7 @@ public:
         for(int i = 1; i <= keySize; i++)
         {
             //  <@  Loop through the entire list looking at a certain index
-            for(int j = 0; j < list.length; j++)
+            for(int j = 0; j < listLen; j++)
             {
                 //  <@  If the last index of the word is a smaller number than the index we're looking at,
                 //      put the word in the bucket for 'a' because smaller words come first in the dictionary
@@ -143,7 +174,7 @@ public:
                     //  <@  Else evaluate the character at that index
                 else
                 {
-                    buckets[list[j].charAt(keySize - shift) - 97].add(list[j]);
+                    buckets[list[j].charAt(keySize - shift) - 97].next = new Node{list[j], nullptr};
                 }
             }
             //  <@  Combine buckets (using a generic class) and increment shift (we are not dividing numbers so
