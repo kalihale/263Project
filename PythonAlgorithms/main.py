@@ -1,4 +1,5 @@
 import BubbleSort
+import RadixSort
 import cProfile
 import pstats
 import random
@@ -9,13 +10,13 @@ def run_test():
     profiler = cProfile.Profile()
     profiler.enable()
 
-    toSort = random.sample(range(0, 100000), 10000)
-    BubbleSort.bubbleSort(toSort)
+    toSort = [1405, 975, 23, 9803, 4835, 2082, 7368, 573, 804, 746, 4703, 1421, 4273, 1208, 521, 2050]#random.sample(range(0, 100000), 10000)
+    RadixSort.radix(toSort, 4)
 
     profiler.disable()
-    profiler.dump_stats("bubbleSort_py.stats")
+    profiler.dump_stats("radixSort_py.stats")
 
-    stats = pstats.Stats("bubbleSort_py.stats")
+    stats = pstats.Stats("radixSort_py.stats")
     stats.print_stats()
 
     # Copy to CSV
@@ -28,7 +29,7 @@ def run_test():
 
     # save it to disk
  
-    with open('./PythonAlgorithms/bubbleSort_py.csv', 'w+') as f:
+    with open('./PythonAlgorithms/radixSort_py.csv', 'w+') as f:
         #f=open(result.rsplit('.')[0]+'.csv','w')
         f.write(result)
         f.close()
@@ -59,4 +60,5 @@ def main():
         pass
 
 if __name__ == "__main__":
-    main()
+    #main()
+    run_test()

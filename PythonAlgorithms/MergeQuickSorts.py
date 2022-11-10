@@ -1,11 +1,14 @@
 import random
 
 
+def mergeSortStart(lst):
+    return mergeSort(lst, 0, len(lst) - 1)
+
 def mergeSort(lst, first, last):
     middle = 0
     count = 0
     if first < last:
-        middle = (first + last)/2
+        middle = (first + last)//2
         count += mergeSort(lst, first, middle)
         count += mergeSort(lst, middle+1, last)
         count += mergeLists(lst, first, middle, middle+1, last)
@@ -89,3 +92,4 @@ def quickSortPivotRandom(lst, first, last, comparisons):
         quickSortPivotRandom(lst, pivot + 1, last, comparisons)
     return count
 
+mergeSortStart([2,4,1,3,4,9,2,4,0,3])
