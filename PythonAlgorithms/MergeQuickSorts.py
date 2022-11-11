@@ -52,7 +52,7 @@ def pivotArr(pivot, arr, left, right, comparisons):
     arr[right]= arr[pivot]
     arr[pivot] = temp
     i = left
-    for j in range(right):
+    for j in range(i, right):
             comparisons[0] += 1
             if arr[j] < arr[right]:
                 temp = arr[i]
@@ -92,4 +92,9 @@ def quickSortPivotRandom(lst, first, last, comparisons):
         quickSortPivotRandom(lst, pivot + 1, last, comparisons)
     return count
 
-mergeSortStart([2,4,1,3,4,9,2,4,0,3])
+
+if __name__ == "__main__":
+    lst = [2,4,1,3,4,9,2,4,0,3]
+    comparisons = [0]
+    print(quickSortPivotFirst(lst, 0, len(lst) - 1, comparisons))
+    print(comparisons)
