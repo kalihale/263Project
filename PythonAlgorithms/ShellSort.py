@@ -1,5 +1,6 @@
 from math import log
 import InsertionSort
+import random
 
 
 def shellSort(lst: list) -> int:
@@ -13,3 +14,7 @@ def shellSort(lst: list) -> int:
         passes -= 1
     
     return count
+
+if __name__ == "__main__":
+    test_lst = random.sample(range(0, 100000), 10000)
+    print(shellSort(test_lst))
