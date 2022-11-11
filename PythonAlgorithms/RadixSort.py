@@ -40,7 +40,8 @@ def radixLL(lst, keySize):
     gcb = CombineBuckets()
 
     for i in range(bucket_length):
-        buckets.add(LinkedList())
+        toAdd = LinkedList()
+        buckets.add(toAdd)
     
     shift = 1
 
