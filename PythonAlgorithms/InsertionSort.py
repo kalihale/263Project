@@ -1,4 +1,9 @@
 import random
+import cProfile
+import pstats
+import io
+
+
 def insertionSort(lst):
     count = 0
     n = len(lst)
@@ -33,6 +38,34 @@ def insertionSortModified(lst, start, increment):
     
     return count
 
+def test_insertionSort():
+    toSort =  random.sample(range(0, 100000), 10000)
+    profiler = cProfile.Profile()
+    profiler.enable()
+
+    
+    insertionSort(toSort)
+
+    profiler.disable()
+    profiler.dump_stats("./PythonAlgorithms/insertionSort_py.stats")
+
+    stats = pstats.Stats("./PythonAlgorithms/insertionSort_py.stats")
+    stats.print_stats()
+
+    # Copy to CSV
+    result = io.StringIO()
+    pstats.Stats(profiler,stream=result).print_stats()
+    result=result.getvalue()
+    # chop the string into a csv-like buffer
+    result='ncalls'+result.split('ncalls')[-1]
+    result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
+
+    # save it to disk
+ 
+    with open('./PythonAlgorithms/insertionSort_py.csv', 'w+') as f:
+        #f=open(result.rsplit('.')[0]+'.csv','w')
+        f.write(result)
+        f.close()
+
 if __name__ == "__main__":
-    test_lst = random.sample(range(0, 100000), 10000)
-    print(insertionSort(test_lst))
+    test_insertionSort()

@@ -1,4 +1,7 @@
 import random
+import cProfile
+import pstats
+import io
 
 
 def mergeSortStart(lst):
@@ -93,8 +96,65 @@ def quickSortPivotRandom(lst, first, last, comparisons):
     return count
 
 
-if __name__ == "__main__":
-    lst = [2,4,1,3,4,9,2,4,0,3]
+# Tests:
+
+
+def test_quickSort():
+    toSort = random.sample(range(0, 100000), 10000)
     comparisons = [0]
-    print(quickSortPivotFirst(lst, 0, len(lst) - 1, comparisons))
-    print(comparisons)
+    
+    profiler = cProfile.Profile()
+    profiler.enable()
+
+    quickSortPivotFirst(toSort, 0, len(toSort) - 1, comparisons)
+
+    profiler.disable()
+    profiler.dump_stats("./PythonAlgorithms/quickSort_py.stats")
+
+    # Copy to CSV
+    result = io.StringIO()
+    pstats.Stats(profiler,stream=result).print_stats()
+    result=result.getvalue()
+    # chop the string into a csv-like buffer
+    result='ncalls'+result.split('ncalls')[-1]
+    result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
+
+    # save it to disk
+ 
+    with open('./PythonAlgorithms/quickSort_py.csv', 'w+') as f:
+        #f=open(result.rsplit('.')[0]+'.csv','w')
+        f.write(result)
+        f.close()
+
+def test_mergeSort():
+    toSort = random.sample(range(0, 100000), 10000)
+
+    profiler = cProfile.Profile()
+    profiler.enable()
+
+    mergeSort(toSort, first = 0, last = len(toSort) - 1)
+
+    profiler.disable()
+    profiler.dump_stats("./PythonAlgorithms/mergeSort_py.stats")
+
+    # Copy to CSV
+    result = io.StringIO()
+    pstats.Stats(profiler,stream=result).print_stats()
+    result=result.getvalue()
+    # chop the string into a csv-like buffer
+    result='ncalls'+result.split('ncalls')[-1]
+    result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
+
+    # save it to disk
+
+    with open('./PythonAlgorithms/mergeSort_py.csv', 'w+') as f:
+        #f=open(result.rsplit('.')[0]+'.csv','w')
+        f.write(result)
+        f.close()
+
+def main():
+    test_mergeSort()
+    test_quickSort()
+
+if __name__ == "__main__":
+    main()
