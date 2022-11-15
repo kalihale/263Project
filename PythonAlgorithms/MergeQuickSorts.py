@@ -2,6 +2,7 @@ import random
 import cProfile
 import pstats
 import io
+import sys
 
 
 def mergeSortStart(lst):
@@ -99,7 +100,7 @@ def quickSortPivotRandom(lst, first, last, comparisons):
 # Tests:
 
 
-def test_quickSort():
+def test_quickSort(count = 0):
     toSort = random.sample(range(0, 100000), 10000)
     comparisons = [0]
     
@@ -109,7 +110,7 @@ def test_quickSort():
     quickSortPivotFirst(toSort, 0, len(toSort) - 1, comparisons)
 
     profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/quickSort_py.stats")
+    profiler.dump_stats("./PythonAlgorithms/outputs/quickSort/quickSort_py"+str(count)+".stats")
 
     # Copy to CSV
     result = io.StringIO()
@@ -121,12 +122,12 @@ def test_quickSort():
 
     # save it to disk
  
-    with open('./PythonAlgorithms/quickSort_py.csv', 'w+') as f:
+    with open("./PythonAlgorithms/outputs/quickSort/quickSort_py"+str(count)+".csv", 'w+') as f:
         #f=open(result.rsplit('.')[0]+'.csv','w')
         f.write(result)
         f.close()
 
-def test_mergeSort():
+def test_mergeSort(count = 0):
     toSort = random.sample(range(0, 100000), 10000)
 
     profiler = cProfile.Profile()
@@ -135,7 +136,7 @@ def test_mergeSort():
     mergeSort(toSort, first = 0, last = len(toSort) - 1)
 
     profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/mergeSort_py.stats")
+    profiler.dump_stats("./PythonAlgorithms/outputs/mergeSort/mergeSort_py"+str(count)+".stats")
 
     # Copy to CSV
     result = io.StringIO()
@@ -147,14 +148,14 @@ def test_mergeSort():
 
     # save it to disk
 
-    with open('./PythonAlgorithms/mergeSort_py.csv', 'w+') as f:
+    with open('./PythonAlgorithms/outputs/mergeSort/mergeSort_py'+str(count)+'.csv', 'w+') as f:
         #f=open(result.rsplit('.')[0]+'.csv','w')
         f.write(result)
         f.close()
 
-def main():
-    test_mergeSort()
-    test_quickSort()
+def main(count = 0):
+    test_mergeSort(count)
+    test_quickSort(count)
 
 if __name__ == "__main__":
-    main()
+    main(int(sys.argv[1]))

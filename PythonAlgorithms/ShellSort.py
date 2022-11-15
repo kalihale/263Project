@@ -4,6 +4,7 @@ import random
 import cProfile
 import pstats
 import io
+import sys
 
 
 def shellSort(lst: list) -> int:
@@ -18,7 +19,7 @@ def shellSort(lst: list) -> int:
     
     return count
 
-def test_shellSort():
+def test_shellSort(count = 0):
     toSort =  random.sample(range(0, 100000), 10000)
     profiler = cProfile.Profile()
     profiler.enable()
@@ -27,9 +28,9 @@ def test_shellSort():
     shellSort(toSort)
 
     profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/shellSort_py.stats")
+    profiler.dump_stats("./PythonAlgorithms/outputs/shellSort/shellSort_py"+str(count)+".stats")
 
-    stats = pstats.Stats("./PythonAlgorithms/shellSort_py.stats")
+    stats = pstats.Stats("./PythonAlgorithms/outputs/shellSort/shellSort_py"+str(count)+".stats")
     stats.print_stats()
 
     # Copy to CSV
@@ -42,11 +43,11 @@ def test_shellSort():
 
     # save it to disk
  
-    with open('./PythonAlgorithms/shellSort_py.csv', 'w+') as f:
+    with open('./PythonAlgorithms/outputs/shellSort/shellSort_py'+str(count)+'.csv', 'w+') as f:
         #f=open(result.rsplit('.')[0]+'.csv','w')
         f.write(result)
         f.close()
 
 
 if __name__ == "__main__":
-    test_shellSort()
+    test_shellSort(int(sys.argv[1]))

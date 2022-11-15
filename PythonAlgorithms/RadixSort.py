@@ -2,6 +2,7 @@ from LinkedList import *
 import cProfile
 import pstats
 import io
+import sys
 
 
 class CombineBuckets:
@@ -58,7 +59,7 @@ def radixLL(lst, keySize):
     
     return lst
 
-def testRadixSort():
+def testRadixSort(count = 0):
     profiler = cProfile.Profile()
     profiler.enable()
 
@@ -66,9 +67,9 @@ def testRadixSort():
     radixLL(toSort, 4)
 
     profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/radixSort_py.stats")
+    profiler.dump_stats("./PythonAlgorithms/outputs/radixSort/radixSort_py"+str(count)+".stats")
 
-    stats = pstats.Stats("./PythonAlgorithms/radixSort_py.stats")
+    stats = pstats.Stats("./PythonAlgorithms/outputs/radixSort/radixSort_py"+str(count)+".stats")
     stats.print_stats()
 
     # Copy to CSV
@@ -81,11 +82,11 @@ def testRadixSort():
 
     # save it to disk
  
-    with open('./PythonAlgorithms/radixSort_py.csv', 'w+') as f:
+    with open('./PythonAlgorithms/outputs/radixSort/radixSort_py'+str(count)+'.csv', 'w+') as f:
         #f=open(result.rsplit('.')[0]+'.csv','w')
         f.write(result)
         f.close()
 
 
 if __name__ == "__main__":
-    testRadixSort()
+    testRadixSort(int(sys.argv[1]))

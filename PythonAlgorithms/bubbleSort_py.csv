@@ -1,6 +1,0 @@
-ncalls,tottime,percall,cumtime,percall,filename:lineno(function)
-1,8.071,8.071,8.071,8.071,d:/Users/rocea/Desktop/Project/263Project/PythonAlgorithms/BubbleSort.py:6(bubbleSort)
-1,0.000,0.000,0.000,0.000,{method 'disable' of '_lsprof.Profiler' objects}
-1,0.000,0.000,0.000,0.000,{built-in method builtins.len}
-
-

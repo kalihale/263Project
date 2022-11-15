@@ -8,3 +8,15 @@ PythonAlgorithms/main.py
 PythonAlgorithms/__pycache__/BubbleSort.cpython-38.pyc
 *.pyc
 PythonAlgorithms/tester.py
+PythonAlgorithms/outputs/bubbleSort/*.csv
+PythonAlgorithms/outputs/bubbleSort/*.stats
+PythonAlgorithms/outputs/insertionSort/*.csv
+PythonAlgorithms/outputs/insertionSort/*.stats
+PythonAlgorithms/outputs/mergeSort/*.csv
+PythonAlgorithms/outputs/mergeSort/*.stats
+PythonAlgorithms/outputs/quickSort/*.csv
+PythonAlgorithms/outputs/quickSort/*.stats
+PythonAlgorithms/outputs/radixSort/*.csv
+PythonAlgorithms/outputs/radixSort/*.stats
+PythonAlgorithms/outputs/shellSort/*.csv
+PythonAlgorithms/outputs/shellSort/*.stats

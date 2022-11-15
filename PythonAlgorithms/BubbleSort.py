@@ -2,6 +2,7 @@ import random
 import cProfile
 import pstats
 import io
+import sys
 
 def bubbleSort(lst):
     count = 0
@@ -19,7 +20,7 @@ def bubbleSort(lst):
     
     return lst
 
-def test_bubbleSort():
+def test_bubbleSort(count=0):
     toSort =  random.sample(range(0, 100000), 10000)
     profiler = cProfile.Profile()
     profiler.enable()
@@ -28,9 +29,9 @@ def test_bubbleSort():
     bubbleSort(toSort)
 
     profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/bubbleSort_py.stats")
+    profiler.dump_stats("./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py"+str(count)+".stats")
 
-    stats = pstats.Stats("./PythonAlgorithms/bubbleSort_py.stats")
+    stats = pstats.Stats("./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py"+str(count)+".stats")
     stats.print_stats()
 
     # Copy to CSV
@@ -43,10 +44,10 @@ def test_bubbleSort():
 
     # save it to disk
  
-    with open('./PythonAlgorithms/bubbleSort_py.csv', 'w+') as f:
+    with open('./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py'+str(count)+'.csv', 'w+') as f:
         #f=open(result.rsplit('.')[0]+'.csv','w')
         f.write(result)
         f.close()
 
 if __name__ == "__main__":
-    test_bubbleSort()
+    test_bubbleSort(int(sys.argv[1]))
