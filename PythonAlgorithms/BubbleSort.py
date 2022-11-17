@@ -3,7 +3,9 @@ import cProfile
 import pstats
 import io
 import sys
+from memory_profiler import profile
 
+@profile
 def bubbleSort(lst):
     count = 0
     numberOfPairs = len(lst)

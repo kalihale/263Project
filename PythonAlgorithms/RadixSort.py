@@ -3,6 +3,7 @@ import cProfile
 import pstats
 import io
 import sys
+from memory_profiler import profile
 
 
 class CombineBuckets:
@@ -20,6 +21,7 @@ class CombineBuckets:
                 j += 1
         return self.lst
 
+@profile
 def radix(lst, keySize):
     bucket_length = 10
     buckets = []
@@ -39,6 +41,7 @@ def radix(lst, keySize):
     
     return lst
 
+@profile
 def radixLL(lst, keySize):
     bucket_length = 10
     buckets = LinkedList()

@@ -3,6 +3,7 @@ import cProfile
 import pstats
 import io
 import sys
+from memory_profiler import profile
 
 
 def insertionSort(lst):

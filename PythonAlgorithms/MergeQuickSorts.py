@@ -3,11 +3,13 @@ import cProfile
 import pstats
 import io
 import sys
+from memory_profiler import profile
 
 
 def mergeSortStart(lst):
     return mergeSort(lst, 0, len(lst) - 1)
 
+@profile
 def mergeSort(lst, first, last):
     middle = 0
     count = 0
@@ -17,6 +19,7 @@ def mergeSort(lst, first, last):
         count += mergeSort(lst, middle+1, last)
         count += mergeLists(lst, first, middle, middle+1, last)
     return count
+
 
 def mergeLists(lst, start1, end1, start2, end2):
     count = 0
@@ -69,6 +72,7 @@ def pivotArr(pivot, arr, left, right, comparisons):
     arr[right] = temp
     return i
 
+@profile
 def quickSortPivotFirst(lst, first, last, comparisons):
     count = 0
     pivot = 0

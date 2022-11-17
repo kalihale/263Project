@@ -5,8 +5,9 @@ import cProfile
 import pstats
 import io
 import sys
+from memory_profiler import profile
 
-
+@profile
 def shellSort(lst: list) -> int:
     count = 0
     passes = int(log(len(lst))/log(2))
