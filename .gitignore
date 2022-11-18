@@ -20,3 +20,8 @@ PythonAlgorithms/outputs/radixSort/*.csv
 PythonAlgorithms/outputs/radixSort/*.stats
 PythonAlgorithms/outputs/shellSort/*.csv
 PythonAlgorithms/outputs/shellSort/*.stats
+JavaAlgorithms/JavaAlgorithms.iml
+.gitignore
+JavaAlgorithms/.idea/modules.xml
+JavaAlgorithms/.idea/misc.xml
+JavaAlgorithms/.idea/vcs.xml
