@@ -5,7 +5,7 @@ import io
 import sys
 from memory_profiler import profile
 
-
+@profile
 def insertionSort(lst):
     count = 0
     n = len(lst)
@@ -22,6 +22,7 @@ def insertionSort(lst):
     
     return count
 
+@profile
 def insertionSortModified(lst, start, increment):
     count = 0
     n = len(lst)
