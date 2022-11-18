@@ -1,5 +1,14 @@
 package JavaAlgorithms;
 
+/** ／(^ㅅ^)＼
+ * @file JavaAlgorithms.Matrix.java
+ * @author Kali Hale
+ * @version 1.0
+ *
+ * Code from CS 310 taught by Dr. Craig Reinhart at California Lutheran University,
+ * used with permission.
+ */
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;

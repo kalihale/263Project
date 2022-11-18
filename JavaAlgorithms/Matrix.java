@@ -5,8 +5,8 @@ package JavaAlgorithms;
  * @author Kali Hale
  * @version 1.0
  *
- * Code used from my undergraduate Algorithms class
- * in Spring of 2021.
+ * Code from CS 310 taught by Dr. Craig Reinhart at California Lutheran University,
+ * used with permission.
  */
 
 public class Matrix {
