@@ -1,0 +1,14 @@
+//
+// Created by kali on 11/17/22.
+//
+
+#ifndef INC_263PROJECT_DOUBLELINKEDLIST_H
+#define INC_263PROJECT_DOUBLELINKEDLIST_H
+
+
+class DoubleLinkedList {
+
+};
+
+
+#endif //INC_263PROJECT_DOUBLELINKEDLIST_H
