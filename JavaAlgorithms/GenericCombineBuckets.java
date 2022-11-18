@@ -11,8 +11,7 @@ package JavaAlgorithms;
 
 import java.util.LinkedList;
 
-public class GenericCombineBuckets <T>
-{
+public class GenericCombineBuckets <T> {
     T[] list;
     LinkedList[] buckets;
     GenericCombineBuckets()

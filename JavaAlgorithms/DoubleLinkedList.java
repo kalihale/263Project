@@ -50,21 +50,18 @@ public class DoubleLinkedList<T> extends LLBase<T> implements LLInterface<T>
     @Override
     public boolean contains(T o)
     {
-//        if(size > 0)
-//        {
-            Node<T> ptr = this.head;
-            while(ptr != null)
+        Node<T> ptr = this.head;
+        while(ptr != null)
+        {
+            if(ptr.getValue().equals(o))
             {
-                if(ptr.getValue().equals(o))
-                {
-                    return true;
-                }
-                else
-                {
-                    ptr = ptr.getNext();
-                }
+                return true;
             }
-//        }
+            else
+            {
+                ptr = ptr.getNext();
+            }
+        }
         return false;
     }
 
