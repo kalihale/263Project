@@ -53,10 +53,14 @@ public class perceptron {
         iterations = 0;
         boolean misclassified = true;
 
+
         while(misclassified) {
             misclassified = false;
             for(int i = 0; i < vectorNum; i++) {
-                if(Math.signum(Matrix.Winograd()))
+                /*if(Math.signum(Matrix.Winograd()))
+                {
+
+                }*/
             }
         }
 
