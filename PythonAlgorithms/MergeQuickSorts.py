@@ -5,11 +5,11 @@ import io
 import sys
 from memory_profiler import profile
 
-
-def mergeSortStart(lst):
-    return mergeSort(lst, 0, len(lst) - 1)
-
 @profile
+def mergeSortStart(lst):
+    return mergeSort(lst, first = 0, last = len(lst) - 1)
+
+#@profile
 def mergeSort(lst, first, last):
     middle = 0
     count = 0
@@ -72,7 +72,7 @@ def pivotArr(pivot, arr, left, right, comparisons):
     arr[right] = temp
     return i
 
-@profile
+#@profile
 def quickSortPivotFirst(lst, first, last, comparisons):
     count = 0
     pivot = 0
@@ -100,6 +100,9 @@ def quickSortPivotRandom(lst, first, last, comparisons):
         quickSortPivotRandom(lst, pivot + 1, last, comparisons)
     return count
 
+@profile
+def quickSortPivotFirstStart(lst, first, last, comparisons):
+    return quickSortPivotFirst(lst, first, last, comparisons)
 
 # Tests:
 
@@ -111,7 +114,7 @@ def test_quickSort(count = 0):
     profiler = cProfile.Profile()
     profiler.enable()
 
-    quickSortPivotFirst(toSort, 0, len(toSort) - 1, comparisons)
+    quickSortPivotFirstStart(toSort, 0, len(toSort) - 1, comparisons)
 
     profiler.disable()
     profiler.dump_stats("./PythonAlgorithms/outputs/quickSort/quickSort_py"+str(count)+".stats")
@@ -137,7 +140,8 @@ def test_mergeSort(count = 0):
     profiler = cProfile.Profile()
     profiler.enable()
 
-    mergeSort(toSort, first = 0, last = len(toSort) - 1)
+    mergeSortStart(toSort)
+    #mergeSort(toSort, first = 0, last = len(toSort) - 1)
 
     profiler.disable()
     profiler.dump_stats("./PythonAlgorithms/outputs/mergeSort/mergeSort_py"+str(count)+".stats")
