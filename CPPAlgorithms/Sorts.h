@@ -7,6 +7,7 @@
 #include <string>
 #include <cmath>
 #include <random>
+#include "DoubleLinkedList.h"
 
 template <typename T>
 
@@ -120,12 +121,12 @@ public:
 
     static int radixSort(int* list, int listLen, int keySize) {
         //  <@  Create buckets
-        Node* buckets = new Node[10];
-        GenericCombineBuckets gcb = new GenericCombineBuckets();
+        DoubleLinkedList<int>* buckets = new DoubleLinkedList<int>[10];
+        auto* gcb = new GenericCombineBuckets();
         //  <@  Initialize linkedlists in array "buckets"
-        for(int i = 0; i < buckets->length; i++)
+        for(int i = 0; i < 10; i++)
         {
-            buckets[i] = new Node();
+            buckets[i] = *new DoubleLinkedList<int>();
         }
         //  <@  Initialize shift at 1
         int shift = 1;
@@ -137,52 +138,14 @@ public:
             //  <@  For the entire list, sort the digit in question into buckets 0-9
             for(int j = 0; j < listLen; j++)
             {
-                buckets[(list[j] / shift) % 10].next = new Node{list[j], nullptr};
+                buckets[(list[j] / shift) % 10].add(list[j]);
             }
             //  <@  Combine the buckets (using a generic class)
             //      Multiply shift by 10
-            gcb.CombineBuckets(list, buckets);
+            gcb->CombineBuckets(list, buckets);
             shift *= 10;
         }
-        return *list;
-    };
-
-    static std::string* radixSort(std::string* list, int listLen, int keySize) {
-        //  <@  Create buckets
-        Node* buckets = new Node[26];
-        GenericCombineBuckets gcb = new GenericCombineBuckets();
-        //  <@  Initialize
-        for(int i = 0; i < 26; i++)
-        {
-            buckets[i] = new Node();
-        }
-        //  <@  Initialize shift
-        int shift = 1;
-        //  <@  Loops until we're done with the longest word
-        for(int i = 1; i <= keySize; i++)
-        {
-            //  <@  Loop through the entire list looking at a certain index
-            for(int j = 0; j < listLen; j++)
-            {
-                //  <@  If the last index of the word is a smaller number than the index we're looking at,
-                //      put the word in the bucket for 'a' because smaller words come first in the dictionary
-                //      (eg. "pea" always comes before "peacock", so we can use 'a' as a placeholder)
-                if (list[j].length() - 1 < keySize - shift)
-                {
-                    buckets[0].add(list[j]);
-                }
-                    //  <@  Else evaluate the character at that index
-                else
-                {
-                    buckets[list[j].charAt(keySize - shift) - 97].next = new Node{list[j], nullptr};
-                }
-            }
-            //  <@  Combine buckets (using a generic class) and increment shift (we are not dividing numbers so
-            //      we're shifting one to the left this time)
-            gcb.CombineBuckets(list, buckets);
-            shift++;
-        }
-        return list;
+        return 1;
     };
 
     static int mergeSort(int* list, int listLen, int first, int last) {

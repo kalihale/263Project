@@ -9,8 +9,8 @@
 template <class T> class Node {
 private:
     T value;
-    Node next;
-    Node previous;
+    Node<T>* next;
+    Node<T>* previous;
 
 public:
     Node(T value) {

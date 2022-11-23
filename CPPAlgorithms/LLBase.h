@@ -9,8 +9,8 @@
 
 template <class U> class LLBase {
 protected:
-    Node<U> head;
-    Node<U> tail;
+    Node<U>* head = nullptr;
+    Node<U>* tail = nullptr;
     int size;
 };
 

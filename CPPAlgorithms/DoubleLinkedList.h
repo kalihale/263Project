@@ -121,41 +121,41 @@ public:
         }
     }
 
-    bool remove(T o) {
-        Node<T>* rm;
-        if(size() == 1 && this->head.getValue() == o) {
-            clear();
-            return true;
-        }
-        else if(this->head.getValue() == o) {
-            rm = this->head;
-            this->head = this->head.getNext();
-            this->head.setPrevious(nullptr);
-            free(rm);
-            return true;
-        }
-        else if(this->tail.getValue() == o) {
-            rm = this->tail;
-            this->tail = this->tail.getPrevious();
-            this->tail.setNext(nullptr);
-            free(rm);
-            return true;
-        }
-        else {
-            Node<T>* ptr = this->head.getNext();
-            while(ptr != nullptr) {
-                if(ptr->getValue() == o) {
-                    rm = ptr;
-                    ptr->getPrevious()->setNext(ptr->getNext());
-                    ptr->getNext()->setPrevious(ptr->getPrevious());
-                    free(rm);
-                    return true;
-                }
-                ptr = ptr->getNext();
-            }
-        }
-        return false;
-    }
+//    bool remove(T o) {
+//        Node<T>* rm;
+//        if(size() == 1 && this->head.getValue() == o) {
+//            clear();
+//            return true;
+//        }
+//        else if(this->head.getValue() == o) {
+//            rm = this->head;
+//            this->head = this->head.getNext();
+//            this->head.setPrevious(nullptr);
+//            free(rm);
+//            return true;
+//        }
+//        else if(this->tail.getValue() == o) {
+//            rm = this->tail;
+//            this->tail = this->tail.getPrevious();
+//            this->tail.setNext(nullptr);
+//            free(rm);
+//            return true;
+//        }
+//        else {
+//            Node<T>* ptr = this->head.getNext();
+//            while(ptr != nullptr) {
+//                if(ptr->getValue() == o) {
+//                    rm = ptr;
+//                    ptr->getPrevious()->setNext(ptr->getNext());
+//                    ptr->getNext()->setPrevious(ptr->getPrevious());
+//                    free(rm);
+//                    return true;
+//                }
+//                ptr = ptr->getNext();
+//            }
+//        }
+//        return false;
+//    }
 
     T remove(int index) {
         if(index < 0 || index >= size()) {
