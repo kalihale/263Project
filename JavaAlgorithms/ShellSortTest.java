@@ -1,14 +1,15 @@
 package JavaAlgorithms;
 
 /**
- * @file JavaAlgorithms.BubbleSortTest.java
+ * @file JavaAlgorithms.ShellSortTest.java
  * @author Aaron Jimenez
  * @version 1.0
  *
  */
 
-public class BubbleSortTest {
+public class ShellSortTest {
     public static final int RUNS = 100;
+
     public static void main(String[] args) {
         int[] toSort;
         double totalTime = 0.0;
@@ -20,7 +21,7 @@ public class BubbleSortTest {
             toSort = CommonUtils.generateRandomIntArray(0, 1000);
 
             startTime = System.currentTimeMillis();
-            BubbleSort.bubbleSort(toSort);
+            ShellSort.shellSort(toSort);
             endTime = System.currentTimeMillis();
 
             totalTime += (endTime - startTime);
@@ -28,6 +29,5 @@ public class BubbleSortTest {
         }
 
         System.out.println("Total Avg Runtime: "+(totalTime/RUNS));
-
     }
 }

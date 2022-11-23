@@ -6,7 +6,7 @@
  * used with permission.
  */
 
-package DoubleLinkedList;
+package JavaAlgorithms;
 
 // import java.util.Iterator;
 

@@ -14,17 +14,6 @@ import java.util.LinkedList;
 
 public class RadixSort
 {
-    public static void main(String[] args)
-    {
-        Integer[] intarr = new Integer[]{1405, 975, 23, 9803, 4835, 2082, 7368, 573, 804, 746, 4703, 1421, 4273, 1208, 521, 2050};
-        String[] strarr = new String[] {"zero", "one", "two", "three", "four", "five", "six", "seven",
-                "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"};
-        System.out.println("Original Integer array: \n" + Arrays.toString(intarr));
-        System.out.println("Sorted Integer array: \n" + Arrays.toString(radix(intarr, 4)));
-        System.out.println("Original String array: \n" + Arrays.toString(strarr));
-        System.out.println("Sorted String array: \n" + Arrays.toString(radix(strarr, 9)));
-//        System.out.println((int)'a');
-    }
     public static Integer[] radix(Integer[] list, int keySize)
     {
         //  <@  Create buckets

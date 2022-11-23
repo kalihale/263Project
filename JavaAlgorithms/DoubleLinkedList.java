@@ -1,3 +1,5 @@
+package JavaAlgorithms;
+
 /** ／(^ㅅ^)＼
  * @file JavaAlgorithms.DoubleLinkedList.java
  * @author Kali Hale

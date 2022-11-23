@@ -1,6 +1,4 @@
-package JavaAlgorithms;
-
-/** ／(^ㅅ^)＼
+package JavaAlgorithms; /** ／(^ㅅ^)＼
  * @file JavaAlgorithms.Matrix.java
  * @author Kali Hale
  * @version 1.0
@@ -9,42 +7,10 @@ package JavaAlgorithms;
  * used with permission.
  */
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.Random;
 
 public class MergeQuickSorts
 {
-    public static void main(String[] args)
-    {
-        try
-        {
-            FileWriter csvwriter = new FileWriter("quicksortPivot1RandNums.csv");
-            Random random = new Random(37);
-
-            int[] list;
-            int[] comparisons = new int[1];
-
-            for (int i = 10; i <= 1000000; i *= 10)
-            {
-                list = new int[i];
-
-                for (int j = 0; j < i; j++)
-                {
-                    list[j] = random.nextInt(100000);
-                }
-                System.out.println(Arrays.toString(list));
-                quickSortPivotFirst(list, 0, list.length - 1, comparisons);
-                csvwriter.write(i + "," + comparisons[0] + "\n");
-                System.out.println(Arrays.toString(list));
-            }
-            csvwriter.close();
-        }catch(IOException e)
-        {
-            System.out.println(e);
-        }
-    }
     public static int mergeSort(int[] list, int first, int last)
     {
         int middle;
