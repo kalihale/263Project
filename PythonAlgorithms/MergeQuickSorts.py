@@ -107,63 +107,71 @@ def quickSortPivotFirstStart(lst, first, last, comparisons):
 # Tests:
 
 
-def test_quickSort(count = 0):
+def test_quickSort(count = 0, cprof = True):
     toSort = random.sample(range(0, 100000), 10000)
     comparisons = [0]
     
-    profiler = cProfile.Profile()
-    profiler.enable()
+    if cprof:
+        profiler = cProfile.Profile()
+        profiler.enable()
 
     quickSortPivotFirstStart(toSort, 0, len(toSort) - 1, comparisons)
 
-    profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/outputs/quickSort/quickSort_py"+str(count)+".stats")
+    if cprof:
+        profiler.disable()
+        profiler.dump_stats("./PythonAlgorithms/outputs/quickSort/quickSort_py"+str(count)+".stats")
 
-    # Copy to CSV
-    result = io.StringIO()
-    pstats.Stats(profiler,stream=result).print_stats()
-    result=result.getvalue()
-    # chop the string into a csv-like buffer
-    result='ncalls'+result.split('ncalls')[-1]
-    result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
+        # Copy to CSV
+        result = io.StringIO()
+        pstats.Stats(profiler,stream=result).print_stats()
+        result=result.getvalue()
+        # chop the string into a csv-like buffer
+        result='ncalls'+result.split('ncalls')[-1]
+        result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
 
-    # save it to disk
- 
-    with open("./PythonAlgorithms/outputs/quickSort/quickSort_py"+str(count)+".csv", 'w+') as f:
-        #f=open(result.rsplit('.')[0]+'.csv','w')
-        f.write(result)
-        f.close()
+        # save it to disk
+    
+        with open("./PythonAlgorithms/outputs/quickSort/quickSort_py"+str(count)+".csv", 'w+') as f:
+            #f=open(result.rsplit('.')[0]+'.csv','w')
+            f.write(result)
+            f.close()
 
-def test_mergeSort(count = 0):
+def test_mergeSort(count = 0, cprof = True):
     toSort = random.sample(range(0, 100000), 10000)
 
-    profiler = cProfile.Profile()
-    profiler.enable()
+    if cprof:
+        profiler = cProfile.Profile()
+        profiler.enable()
 
     mergeSortStart(toSort)
     #mergeSort(toSort, first = 0, last = len(toSort) - 1)
 
-    profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/outputs/mergeSort/mergeSort_py"+str(count)+".stats")
+    if cprof:
+        profiler.disable()
+        profiler.dump_stats("./PythonAlgorithms/outputs/mergeSort/mergeSort_py"+str(count)+".stats")
 
-    # Copy to CSV
-    result = io.StringIO()
-    pstats.Stats(profiler,stream=result).print_stats()
-    result=result.getvalue()
-    # chop the string into a csv-like buffer
-    result='ncalls'+result.split('ncalls')[-1]
-    result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
+        # Copy to CSV
+        result = io.StringIO()
+        pstats.Stats(profiler,stream=result).print_stats()
+        result=result.getvalue()
+        # chop the string into a csv-like buffer
+        result='ncalls'+result.split('ncalls')[-1]
+        result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
 
-    # save it to disk
+        # save it to disk
 
-    with open('./PythonAlgorithms/outputs/mergeSort/mergeSort_py'+str(count)+'.csv', 'w+') as f:
-        #f=open(result.rsplit('.')[0]+'.csv','w')
-        f.write(result)
-        f.close()
+        with open('./PythonAlgorithms/outputs/mergeSort/mergeSort_py'+str(count)+'.csv', 'w+') as f:
+            #f=open(result.rsplit('.')[0]+'.csv','w')
+            f.write(result)
+            f.close()
 
-def main(count = 0):
-    test_mergeSort(count)
-    test_quickSort(count)
+def main(count = 0, cprof = True):
+    test_mergeSort(count, cprof)
+    test_quickSort(count, cprof)
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]))
+    if len(sys.argv) > 2:
+        cprof = True
+    else:
+        cprof = False
+    main(int(sys.argv[1]), cprof)
