@@ -22,7 +22,7 @@ def insertionSort(lst):
     
     return count
 
-@profile
+#@profile
 def insertionSortModified(lst, start, increment):
     count = 0
     n = len(lst)
@@ -41,34 +41,40 @@ def insertionSortModified(lst, start, increment):
     
     return count
 
-def test_insertionSort(count = 0):
+def test_insertionSort(count = 0, cprof = True):
     toSort =  random.sample(range(0, 100000), 10000)
-    profiler = cProfile.Profile()
-    profiler.enable()
+    if cprof:
+        profiler = cProfile.Profile()
+        profiler.enable()
 
     
     insertionSort(toSort)
+    
+    if cprof:
+        profiler.disable()
+        profiler.dump_stats("./PythonAlgorithms/outputs/insertionSort/insertionSort_py"+str(count)+".stats")
 
-    profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/outputs/insertionSort/insertionSort_py"+str(count)+".stats")
+        stats = pstats.Stats("./PythonAlgorithms/outputs/insertionSort/insertionSort_py"+str(count)+".stats")
+        stats.print_stats()
 
-    stats = pstats.Stats("./PythonAlgorithms/outputs/insertionSort/insertionSort_py"+str(count)+".stats")
-    stats.print_stats()
+        # Copy to CSV
+        result = io.StringIO()
+        pstats.Stats(profiler,stream=result).print_stats()
+        result=result.getvalue()
+        # chop the string into a csv-like buffer
+        result='ncalls'+result.split('ncalls')[-1]
+        result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
 
-    # Copy to CSV
-    result = io.StringIO()
-    pstats.Stats(profiler,stream=result).print_stats()
-    result=result.getvalue()
-    # chop the string into a csv-like buffer
-    result='ncalls'+result.split('ncalls')[-1]
-    result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
-
-    # save it to disk
- 
-    with open("./PythonAlgorithms/outputs/insertionSort/insertionSort_py"+str(count)+".csv", 'w+') as f:
-        #f=open(result.rsplit('.')[0]+'.csv','w')
-        f.write(result)
-        f.close()
+        # save it to disk
+    
+        with open("./PythonAlgorithms/outputs/insertionSort/insertionSort_py"+str(count)+".csv", 'w+') as f:
+            #f=open(result.rsplit('.')[0]+'.csv','w')
+            f.write(result)
+            f.close()
 
 if __name__ == "__main__":
-    test_insertionSort(int(sys.argv[1]))
+    if len(sys.argv) > 2:
+        cprof = True
+    else:
+        cprof = False
+    test_insertionSort(int(sys.argv[1]), cprof)

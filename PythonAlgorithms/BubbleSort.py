@@ -22,34 +22,40 @@ def bubbleSort(lst):
     
     return lst
 
-def test_bubbleSort(count=0):
+def test_bubbleSort(count=0, cprof = True):
     toSort =  random.sample(range(0, 100000), 10000)
-    profiler = cProfile.Profile()
-    profiler.enable()
+    if cprof:
+        profiler = cProfile.Profile()
+        profiler.enable()
 
     
     bubbleSort(toSort)
 
-    profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py"+str(count)+".stats")
+    if cprof:
+        profiler.disable()
+        profiler.dump_stats("./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py"+str(count)+".stats")
 
-    stats = pstats.Stats("./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py"+str(count)+".stats")
-    stats.print_stats()
+        stats = pstats.Stats("./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py"+str(count)+".stats")
+        stats.print_stats()
 
-    # Copy to CSV
-    result = io.StringIO()
-    pstats.Stats(profiler,stream=result).print_stats()
-    result=result.getvalue()
-    # chop the string into a csv-like buffer
-    result='ncalls'+result.split('ncalls')[-1]
-    result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
+        # Copy to CSV
+        result = io.StringIO()
+        pstats.Stats(profiler,stream=result).print_stats()
+        result=result.getvalue()
+        # chop the string into a csv-like buffer
+        result='ncalls'+result.split('ncalls')[-1]
+        result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
 
-    # save it to disk
- 
-    with open('./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py'+str(count)+'.csv', 'w+') as f:
-        #f=open(result.rsplit('.')[0]+'.csv','w')
-        f.write(result)
-        f.close()
+        # save it to disk
+    
+        with open('./PythonAlgorithms/outputs/bubbleSort/bubbleSort_py'+str(count)+'.csv', 'w+') as f:
+            #f=open(result.rsplit('.')[0]+'.csv','w')
+            f.write(result)
+            f.close()
 
 if __name__ == "__main__":
-    test_bubbleSort(int(sys.argv[1]))
+    if len(sys.argv) > 2:
+        cprof = True
+    else:
+        cprof = False
+    test_bubbleSort(int(sys.argv[1]), cprof)

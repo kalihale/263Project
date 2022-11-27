@@ -3,6 +3,7 @@ import cProfile
 import pstats
 import io
 import sys
+import random
 from memory_profiler import profile
 
 
@@ -21,7 +22,7 @@ class CombineBuckets:
                 j += 1
         return self.lst
 
-@profile
+#@profile
 def radix(lst, keySize):
     bucket_length = 10
     buckets = []
@@ -62,34 +63,42 @@ def radixLL(lst, keySize):
     
     return lst
 
-def testRadixSort(count = 0):
-    profiler = cProfile.Profile()
-    profiler.enable()
+def testRadixSort(count = 0, cprof = True):
+    toSort = random.sample(range(0, 100000), 10000)#[1405, 975, 23, 9803, 4835, 2082, 7368, 573, 804, 746, 4703, 1421, 4273, 1208, 521, 2050]#random.sample(range(0, 100000), 10000)
 
-    toSort = [1405, 975, 23, 9803, 4835, 2082, 7368, 573, 804, 746, 4703, 1421, 4273, 1208, 521, 2050]#random.sample(range(0, 100000), 10000)
+    if cprof:
+        profiler = cProfile.Profile()
+        profiler.enable()
+
+    
     radixLL(toSort, 4)
 
-    profiler.disable()
-    profiler.dump_stats("./PythonAlgorithms/outputs/radixSort/radixSort_py"+str(count)+".stats")
+    if cprof:
+        profiler.disable()
+        profiler.dump_stats("./PythonAlgorithms/outputs/radixSort/radixSort_py"+str(count)+".stats")
 
-    stats = pstats.Stats("./PythonAlgorithms/outputs/radixSort/radixSort_py"+str(count)+".stats")
-    stats.print_stats()
+        stats = pstats.Stats("./PythonAlgorithms/outputs/radixSort/radixSort_py"+str(count)+".stats")
+        stats.print_stats()
 
-    # Copy to CSV
-    result = io.StringIO()
-    pstats.Stats(profiler,stream=result).print_stats()
-    result=result.getvalue()
-    # chop the string into a csv-like buffer
-    result='ncalls'+result.split('ncalls')[-1]
-    result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
+        # Copy to CSV
+        result = io.StringIO()
+        pstats.Stats(profiler,stream=result).print_stats()
+        result=result.getvalue()
+        # chop the string into a csv-like buffer
+        result='ncalls'+result.split('ncalls')[-1]
+        result='\n'.join([','.join(line.rstrip().split(None,5)) for line in result.split('\n')])
 
-    # save it to disk
- 
-    with open('./PythonAlgorithms/outputs/radixSort/radixSort_py'+str(count)+'.csv', 'w+') as f:
-        #f=open(result.rsplit('.')[0]+'.csv','w')
-        f.write(result)
-        f.close()
+        # save it to disk
+    
+        with open('./PythonAlgorithms/outputs/radixSort/radixSort_py'+str(count)+'.csv', 'w+') as f:
+            #f=open(result.rsplit('.')[0]+'.csv','w')
+            f.write(result)
+            f.close()
 
 
 if __name__ == "__main__":
-    testRadixSort(int(sys.argv[1]))
+    if len(sys.argv) > 2:
+        cprof = True
+    else:
+        cprof = False
+    testRadixSort(int(sys.argv[1]), cprof)
