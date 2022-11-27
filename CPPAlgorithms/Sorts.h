@@ -187,6 +187,7 @@ public:
             list[i] = result[indexC];
             indexC++;
         }
+        free(result);
         return count;
     };
 
