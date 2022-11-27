@@ -1,0 +1,272 @@
+        -:    0:Source:/home/kali/CLionProjects/263Project/CPPAlgorithms/Sorts.h
+        -:    0:Graph:/home/kali/CLionProjects/263Project/cmake-build-debug-coverage/CMakeFiles/263Project.dir/CPPAlgorithms/main.cpp.gcno
+        -:    0:Data:/home/kali/CLionProjects/263Project/cmake-build-debug-coverage/CMakeFiles/263Project.dir/CPPAlgorithms/main.cpp.gcda
+        -:    0:Runs:1
+        -:    1://
+        -:    2:// Created by kali on 11/2/22.
+        -:    3://
+        -:    4:
+        -:    5:#ifndef INC_263PROJECT_SORTS_H
+        -:    6:#define INC_263PROJECT_SORTS_H
+        -:    7:
+        -:    8:#include <string>
+        -:    9:#include <cmath>
+        -:   10:#include <random>
+        -:   11:#include "DoubleLinkedList.h"
+        -:   12:
+        -:   13:template<typename T>
+        -:   14:
+        -:   15:class Sorts {
+        -:   16:public:
+        -:   17:    struct Node {
+        -:   18:        T data;
+        -:   19:        struct Node *next = nullptr;
+        -:   20:    };
+        -:   21:
+        -:   22:    T *list;
+        -:   23:    Node *buckets;
+        -:   24:
+        -:   25:    class GenericCombineBuckets {
+        -:   26:    public:
+        -:   27:        T *list;
+        -:   28:        Node *buckets;
+        -:   29:
+        -:   30:        // ／(^ㅅ^)＼ buckets is an array of starting nodes for linked lists
+        -:   31:        //           list is the full array of elements
+        -:   32:        //           listlen is the length of the list
+        -:   33:        //           numBuckets is the number of linkedlists in buckets
+        -:   34:        void combineBuckets(T *list, Node *buckets, int listlen, int numBuckets) {
+        -:   35:            this->list = list;
+        -:   36:            this->buckets = buckets;
+        -:   37:            int j = 0;
+        -:   38:            for(int i = 0; i < numBuckets; ++i) {
+        -:   39:                while(buckets[i]) {
+        -:   40:                    this->list[j] = (T) buckets[i].data;
+        -:   41:                    buckets[i] = buckets[i].next;
+        -:   42:                    j++;
+        -:   43:                }
+        -:   44:            }
+        -:   45:        }
+        -:   46:    };
+        -:   47:
+function _ZN5SortsIiE10bubbleSortEPii called 1000 returned 100% blocks executed 100%
+     1000:   48:    static int bubbleSort(int *list, int listLen) {
+     1000:   49:        int count = 0;
+     1000:   50:        int numberOfPairs = listLen;
+     1000:   51:        bool swappedElements = true;
+        -:   52:        int temp;
+   962233:   53:        while(swappedElements) {
+     1000:   53-block  0
+   962233:   53-block  1
+branch  0 taken 961233
+branch  1 taken 1000 (fallthrough)
+   961233:   54:            numberOfPairs--;
+   961233:   55:            swappedElements = false;
+499531085:   56:            for(int i = 0; i < numberOfPairs; ++i) {
+   961233:   56-block  0
+498569852:   56-block  1
+499531085:   56-block  2
+branch  0 taken 498569852
+branch  1 taken 961233 (fallthrough)
+498569852:   57:                count++;
+498569852:   58:                if(list[i] > list[i + 1]) {
+498569852:   58-block  0
+branch  0 taken 249450685 (fallthrough)
+branch  1 taken 249119167
+249450685:   59:                    temp = list[i];
+249450685:   60:                    list[i] = list[i + 1];
+249450685:   61:                    list[i + 1] = temp;
+249450685:   62:                    swappedElements = true;
+249450685:   62-block  0
+        -:   63:                }
+        -:   64:            }
+        -:   65:        }
+     1000:   66:        return count;
+     1000:   66-block  0
+        -:   67:    };
+        -:   68:
+        -:   69:    static int insertionSort(int *list, int listLen) {
+        -:   70:        int count = 0;
+        -:   71:        int n = listLen;
+        -:   72:        for(int i = 1; i < n; i++) {
+        -:   73:            int newElement = list[i];
+        -:   74:            int location = i - 1;
+        -:   75:            count++;
+        -:   76:            while(location >= 0 && list[location] > newElement) {
+        -:   77:                list[location + 1] = list[location];
+        -:   78:                location = location - 1;
+        -:   79:                count++;
+        -:   80:            }
+        -:   81:            list[location + 1] = newElement;
+        -:   82:        }
+        -:   83:        return count;
+        -:   84:    };
+        -:   85:
+        -:   86:    static int insertionSortModified(int *list, int listLen, int start, int increment) {
+        -:   87:        int count = 0;
+        -:   88:        int n = listLen;
+        -:   89:        //  <@  Must have a loop which compares each number in the sublist to each previous number in its sublist
+        -:   90:        //      (starts at i + increment and ends when => n)
+        -:   91:        for(int j = start + increment; j < n; j += increment) {
+        -:   92:            //  <@  Inside this is where the insertion sort logic goes
+        -:   93:            int newElement = list[j];
+        -:   94:            int location = j - increment;
+        -:   95:            count++;
+        -:   96:            while(location >= 0 && list[location] > newElement && location + increment < listLen) {
+        -:   97:                list[location + increment] = list[location];
+        -:   98:                location = location - increment;
+        -:   99:                count++;
+        -:  100:            }
+        -:  101:            list[location + increment] = newElement;
+        -:  102:        }
+        -:  103:        return count;
+        -:  104:    };
+        -:  105:
+        -:  106:    static int shellSort(int *list, int listLen) {
+        -:  107:        int count = 0;
+        -:  108:        int passes = (int) (std::log(listLen) / std::log(2));
+        -:  109:        while(passes >= 1) {
+        -:  110:            int increment = std::pow(2, passes - 1);
+        -:  111:            for(int i = 0; i < increment; i++) {
+        -:  112:                count += insertionSortModified(list, listLen, i, increment);
+        -:  113:            }
+        -:  114:            passes--;
+        -:  115:        }
+        -:  116:        return count;
+        -:  117:    };
+        -:  118:
+        -:  119:    static int radixSort(int *list, int listLen, int keySize) {
+        -:  120:        //  <@  Create buckets
+        -:  121:        DoubleLinkedList<int> *buckets = new DoubleLinkedList<int>[10];
+        -:  122:        auto *gcb = new GenericCombineBuckets();
+        -:  123:        //  <@  Initialize linkedlists in array "buckets"
+        -:  124:        for(int i = 0; i < 10; i++) {
+        -:  125:            buckets[i] = *new DoubleLinkedList<int>();
+        -:  126:        }
+        -:  127:        //  <@  Initialize shift at 1
+        -:  128:        int shift = 1;
+        -:  129:        //  <@  Up until the largest digit (starting with the ones digit for all numbers)
+        -:  130:        //      Note: Once the number of digits in shift is larger than the number of digits in a number,
+        -:  131:        //      (list[j] / shift) % 10 will return 0, which will put the number in the 0 bucket
+        -:  132:        for(int i = 1; i <= keySize; i++) {
+        -:  133:            //  <@  For the entire list, sort the digit in question into buckets 0-9
+        -:  134:            for(int j = 0; j < listLen; j++) {
+        -:  135:                buckets[(list[j] / shift) % 10].add(list[j]);
+        -:  136:            }
+        -:  137:            //  <@  Combine the buckets (using a generic class)
+        -:  138:            //      Multiply shift by 10
+        -:  139:            gcb->CombineBuckets(list, buckets);
+        -:  140:            shift *= 10;
+        -:  141:        }
+        -:  142:        return 1;
+        -:  143:    };
+        -:  144:
+        -:  145:    static int mergeSort(int *list, int listLen, int first, int last) {
+        -:  146:        int middle;
+        -:  147:        int count = 0;
+        -:  148:        if(first < last) {
+        -:  149:            middle = (first + last) / 2;
+        -:  150:            count += mergeSort(list, listLen, first, middle);
+        -:  151:            count += mergeSort(list, listLen, middle + 1, last);
+        -:  152:            count += mergeLists(list, listLen, first, middle, middle + 1, last);
+        -:  153:        }
+        -:  154:        return count;
+        -:  155:    };
+        -:  156:
+        -:  157:    static int mergeLists(int *list, int listLen, int start1, int end1, int start2, int end2) {
+        -:  158:        int count = 0;
+        -:  159:        int *result = new int[listLen];
+        -:  160:        int finalStart = start1;
+        -:  161:        int finalEnd = end2;
+        -:  162:        int indexC = 0;
+        -:  163:        while(start1 <= end1 && start2 <= end2) {
+        -:  164:            count++;
+        -:  165:            if(list[start1] < list[start2]) {
+        -:  166:                result[indexC] = list[start1];
+        -:  167:                start1++;
+        -:  168:            } else {
+        -:  169:                result[indexC] = list[start2];
+        -:  170:                start2++;
+        -:  171:            }
+        -:  172:            indexC++;
+        -:  173:        }
+        -:  174:        if(start1 <= end1) {
+        -:  175:            for(int i = start1; i <= end1; i++) {
+        -:  176:                result[indexC] = list[i];
+        -:  177:                indexC++;
+        -:  178:            }
+        -:  179:        } else {
+        -:  180:            for(int i = start2; i <= end2; i++) {
+        -:  181:                result[indexC] = list[i];
+        -:  182:                indexC++;
+        -:  183:            }
+        -:  184:        }
+        -:  185:        indexC = 0;
+        -:  186:        for(int i = finalStart; i <= finalEnd; i++) {
+        -:  187:            list[i] = result[indexC];
+        -:  188:            indexC++;
+        -:  189:        }
+        -:  190:        return count;
+        -:  191:    };
+        -:  192:
+        -:  193:    static int quickSortPivotFirst(int *list, int first, int last, int *comparisons) {
+        -:  194:        int count = 0;
+        -:  195:        int pivot;
+        -:  196:        if(first < last) {
+        -:  197:            pivot = Sorts::pivot(first, list, first, last, comparisons);
+        -:  198:            quickSortPivotFirst(list, first, pivot - 1, comparisons);
+        -:  199:            quickSortPivotFirst(list, pivot + 1, last, comparisons);
+        -:  200:        }
+        -:  201:        return count;
+        -:  202:    };
+        -:  203:
+        -:  204:    static int quickSortPivotLast(int *list, int first, int last, int *comparisons) {
+        -:  205:        int count = 0;
+        -:  206:        int pivot;
+        -:  207:        if(first < last) {
+        -:  208:            pivot = Sorts::pivot(last, list, first, last, comparisons);
+        -:  209:            quickSortPivotLast(list, first, pivot - 1, comparisons);
+        -:  210:            quickSortPivotLast(list, pivot + 1, last, comparisons);
+        -:  211:        }
+        -:  212:        return count;
+        -:  213:    };
+        -:  214:
+        -:  215:    static int quickSortPivotRandom(int *list, int first, int last, int *comparisons) {
+        -:  216:        std::random_device rd;
+        -:  217:        std::mt19937 mt(rd());
+        -:  218:        std::uniform_int_distribution<int> dist(first, last);
+        -:  219:        int count = 0;
+        -:  220:        int pivot;
+        -:  221:        if(first < last) {
+        -:  222:            pivot = Sorts::pivot(dist(mt), list, first, last, comparisons);
+        -:  223:            quickSortPivotRandom(list, first, pivot - 1, comparisons);
+        -:  224:            quickSortPivotRandom(list, pivot + 1, last, comparisons);
+        -:  225:        }
+        -:  226:        return count;
+        -:  227:    };
+        -:  228:
+        -:  229:    static int pivot(int pivot, int *list, int left, int right, int *comparisons) {
+        -:  230:        int temp = list[right];
+        -:  231:        list[right] = list[pivot];
+        -:  232:        list[pivot] = temp;
+        -:  233:        int i = left;
+        -:  234:
+        -:  235:        for(int j = i; j < right; j++) {
+        -:  236:            comparisons[0]++;
+        -:  237:            if(list[j] < list[right]) {
+        -:  238:                temp = list[i];
+        -:  239:                list[i] = list[j];
+        -:  240:                list[j] = temp;
+        -:  241:                i++;
+        -:  242:            }
+        -:  243:
+        -:  244:        }
+        -:  245:        temp = list[i];
+        -:  246:        list[i] = list[right];
+        -:  247:        list[right] = temp;
+        -:  248:        return i;
+        -:  249:    }
+        -:  250:};
+        -:  251:
+        -:  252:
+        -:  253:#endif //INC_263PROJECT_SORTS_H

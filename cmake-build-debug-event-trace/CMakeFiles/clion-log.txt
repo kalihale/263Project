@@ -1,0 +1,4 @@
+/home/kali/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/kali/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/ninja/linux/ninja --profiling-format=google-trace --profiling-output=CMakeFiles/clion-event-trace.json -G Ninja -S /home/kali/CLionProjects/263Project -B /home/kali/CLionProjects/263Project/cmake-build-debug-event-trace
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/kali/CLionProjects/263Project/cmake-build-debug-event-trace

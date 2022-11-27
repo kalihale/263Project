@@ -1,0 +1,3 @@
+/home/kali/CLionProjects/263Project/cmake-build-debug-coverage/CMakeFiles/263Project.dir
+/home/kali/CLionProjects/263Project/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+/home/kali/CLionProjects/263Project/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir
