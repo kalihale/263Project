@@ -19,23 +19,23 @@ public:
         this->previous;
     }
 
-    void setNext(Node next) {
+    void setNext(Node<T>* next) {
         this->next = next;
     }
 
-    void setPrevious(Node previous) {
+    void setPrevious(Node<T>* previous) {
         this->previous = previous;
     }
 
-    Node* getNext() {
+    Node<T>* getNext() {
         return this->next;
     }
 
-    Node* getPrevious() {
+    Node<T>* getPrevious() {
         return this->previous;
     }
 
-    T getValue() {
+    int getValue() {
         return this->value;
     }
 
@@ -44,9 +44,9 @@ public:
     }
 
     bool equals(T o) {
-        Node e = (Node) o;
+        Node<T>* e = (Node<T>) o;
         T lhs = this->value;
-        T rhs = e.value;
+        T rhs = e->value;
 
         return lhs == rhs;
     }

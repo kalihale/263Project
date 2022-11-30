@@ -17,7 +17,7 @@ public:
         Node<T>* ptr;
         for(int i = 0; i < size(); ++i) {
             ptr = this->head;
-            this->head = this->head.getNext();
+            this->head = this->head->getNext();
             free(ptr);
         }
     }
@@ -86,7 +86,6 @@ public:
             addNode->setPrevious(ptr);
         }
         this->tail = addNode;
-        this->size++;
     }
 
     void add(int index, T e) {
@@ -163,22 +162,22 @@ public:
         }
         else if(index == 0) {
             Node<T>* ptr = this->head;
-            this->head = this->head.getNext();
-            this->head.setPrevious(nullptr);
+            this->head = this->head->getNext();
+            this->head->setPrevious(nullptr);
             T val = ptr->getValue();
             free(ptr);
             return val;
         }
         else if(index == size() - 1) {
             Node<T>* ptr = this->tail;
-            this->tail = this->tail.getPrevious();
-            this->tail.setNext(nullptr);
+            this->tail = this->tail->getPrevious();
+            this->tail->setNext(nullptr);
             T val = ptr->getValue();
             free(ptr);
             return val;
         }
         else {
-            Node<T>* ptr = this->head.getNext();
+            Node<T>* ptr = this->head->getNext();
             for(int i = 0; i < index; ++i) {
                 ptr = ptr->getNext();
             }

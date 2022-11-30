@@ -24,21 +24,20 @@ public:
 
     class GenericCombineBuckets {
     public:
-        T *list;
-        Node *buckets;
+        T* list;
+        DoubleLinkedList<T>* buckets;
 
         // ／(^ㅅ^)＼ buckets is an array of starting nodes for linked lists
         //           list is the full array of elements
         //           listlen is the length of the list
         //           numBuckets is the number of linkedlists in buckets
-        void combineBuckets(T *list, Node *buckets, int listlen, int numBuckets) {
+        void combineBuckets(T *list, DoubleLinkedList<int>*buckets, int listlen, int numBuckets) {
             this->list = list;
             this->buckets = buckets;
             int j = 0;
             for(int i = 0; i < numBuckets; ++i) {
-                while(buckets[i]) {
-                    this->list[j] = (T) buckets[i].data;
-                    buckets[i] = buckets[i].next;
+                while(!buckets[i].isEmpty()) {
+                    this->list[j] = (T) buckets[i].remove(0);
                     j++;
                 }
             }
@@ -118,7 +117,7 @@ public:
 
     static int radixSort(int *list, int listLen, int keySize) {
         //  <@  Create buckets
-        DoubleLinkedList<int> *buckets = new DoubleLinkedList<int>[10];
+        auto* buckets = new DoubleLinkedList<int>[10];
         auto *gcb = new GenericCombineBuckets();
         //  <@  Initialize linkedlists in array "buckets"
         for(int i = 0; i < 10; i++) {
@@ -136,7 +135,7 @@ public:
             }
             //  <@  Combine the buckets (using a generic class)
             //      Multiply shift by 10
-            gcb->CombineBuckets(list, buckets);
+            gcb->combineBuckets(list, buckets, 1000, 10);
             shift *= 10;
         }
         return 1;

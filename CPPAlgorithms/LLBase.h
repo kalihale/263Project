@@ -8,7 +8,7 @@
 #include "Node.h"
 
 template <class U> class LLBase {
-protected:
+public:
     Node<U>* head = nullptr;
     Node<U>* tail = nullptr;
     int size;

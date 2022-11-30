@@ -26,20 +26,20 @@ int main(int argc, const char *argv[]) {
     std::chrono::time_point<system_clock, system_clock::duration> startTime;
     std::chrono::time_point<system_clock, system_clock::duration> endTime;
 
-    // ／(^ㅅ^)＼ BubbleSort Tests
-    totalTime = 0;
-    for(int i = 0; i < RUNS; ++i) {
-        for(int &j: arr) {
-            j = dist(mt);
-        }
-
-        startTime = std::chrono::high_resolution_clock::now();
-        Sorts<int>::bubbleSort(arr, LEN);
-        endTime = std::chrono::high_resolution_clock::now();
-        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
-    }
-
-    std::cout << "BubbleSort Average Time: " << (double)totalTime / RUNS << std::endl;
+//    // ／(^ㅅ^)＼ BubbleSort Tests
+//    totalTime = 0;
+//    for(int i = 0; i < RUNS; ++i) {
+//        for(int &j: arr) {
+//            j = dist(mt);
+//        }
+//
+//        startTime = std::chrono::high_resolution_clock::now();
+//        Sorts<int>::bubbleSort(arr, LEN);
+//        endTime = std::chrono::high_resolution_clock::now();
+//        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+//    }
+//
+//    std::cout << "BubbleSort Average Time: " << (double)totalTime / RUNS << std::endl;
 
 //    // ／(^ㅅ^)＼ Insertion Sort Tests
 //    totalTime = 0;
@@ -71,20 +71,20 @@ int main(int argc, const char *argv[]) {
 //
 //    std::cout << "ShellSort Average Time: " << (double)totalTime / RUNS << std::endl;
 
-//    // ／(^ㅅ^)＼ RadixSort Times
-//    totalTime = 0;
-//    for(int i = 0; i < RUNS; ++i) {
-//        for(int &j: arr) {
-//            j = dist(mt);
-//        }
-//
-//        startTime = std::chrono::high_resolution_clock::now();
-//        Sorts<int>::radixSort(arr, 1000);
-//        endTime = std::chrono::high_resolution_clock::now();
-//        totalTime += std::chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime).count();
-//    }
-//
-//    std::cout << "RadixSort Average Time: " << (double)totalTime / RUNS << std::endl;
+    // ／(^ㅅ^)＼ RadixSort Times
+    totalTime = 0;
+    for(int i = 0; i < RUNS; ++i) {
+        for(int &j: arr) {
+            j = dist(mt);
+        }
+
+        startTime = std::chrono::high_resolution_clock::now();
+        Sorts<int>::radixSort(arr, 1000, 3);
+        endTime = std::chrono::high_resolution_clock::now();
+        totalTime += std::chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime).count();
+    }
+
+    std::cout << "RadixSort Average Time: " << (double)totalTime / RUNS << std::endl;
 
 //    // ／(^ㅅ^)＼ MergeSort Times
 //    totalTime = 0;
