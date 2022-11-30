@@ -160,11 +160,19 @@ public:
         if(index < 0 || index >= size()) {
             throw std::invalid_argument("Invalid index");
         }
-        else if(index == 0) {
+        else if(index == 0 && size() > 1) {
             Node<T>* ptr = this->head;
             this->head = this->head->getNext();
             this->head->setPrevious(nullptr);
             T val = ptr->getValue();
+            free(ptr);
+            return val;
+        }
+        else if(index == 0 && size() == 1) {
+            Node<T>* ptr = this->head;
+            T val = this->head->getValue();
+            this->head = nullptr;
+            this->tail = nullptr;
             free(ptr);
             return val;
         }

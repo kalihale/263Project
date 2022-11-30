@@ -79,12 +79,15 @@ int main(int argc, const char *argv[]) {
         }
 
         startTime = std::chrono::high_resolution_clock::now();
-        Sorts<int>::radixSort(arr, 1000, 3);
+        Sorts<int>::radixSort(arr, 1000, 4);
         endTime = std::chrono::high_resolution_clock::now();
-        totalTime += std::chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime).count();
+        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
     }
 
     std::cout << "RadixSort Average Time: " << (double)totalTime / RUNS << std::endl;
+    for(int i = 0; i < 1000; ++i) {
+        std::cout << arr[i] << std::endl;
+    }
 
 //    // ／(^ㅅ^)＼ MergeSort Times
 //    totalTime = 0;

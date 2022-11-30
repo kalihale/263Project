@@ -24,7 +24,8 @@ public:
     }
 
     void setPrevious(Node<T>* previous) {
-        this->previous = previous;
+        if(previous != nullptr) this->previous = previous;
+        else this->previous = nullptr;
     }
 
     Node<T>* getNext() {
