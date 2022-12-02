@@ -1,13 +1,13 @@
 --------------------------------------------------------------------------------
 Command:            ./quick
 Massif arguments:   --time-unit=B
-ms_print arguments: massif.out.39813
+ms_print arguments: massif.out.11689
 --------------------------------------------------------------------------------
 
 
     KB
-72.04^                                    #                                   
-     |                                   :#:::::::::::::::::::::::::::::::::: 
+72.04^                                    ################################### 
+     |                                   :#                                   
      |                                   :#                                   
      |                                   :#                                   
      |                                   :#                                   
@@ -29,7 +29,7 @@ ms_print arguments: massif.out.39813
    0 +----------------------------------------------------------------------->KB
      0                                                                   144.1
 
-Number of snapshots: 8
+Number of snapshots: 7
  Detailed snapshots: [4 (peak)]
 
 --------------------------------------------------------------------------------
@@ -54,14 +54,12 @@ Number of snapshots: 8
 |       ->01.39% (1,024B) 0x4B3B754: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
 |         ->01.39% (1,024B) 0x4B30056: fwrite (iofwrite.c:39)
 |           ->01.39% (1,024B) 0x49A2B34: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-|             ->01.39% (1,024B) 0x49A2E8A: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
-|               ->01.39% (1,024B) 0x10A736: main (in /home/kali/CLionProjects/263Project/quick)
-|                 
+|             ->01.39% (1,024B) 0x10A198: main (in /home/kali/CLionProjects/263Project/quick)
+|               
 ->00.01% (4B) in 1+ places, all below ms_print's threshold (01.00%)
 
 --------------------------------------------------------------------------------
   n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
 --------------------------------------------------------------------------------
-  5         73,792           73,744           73,728            16            0
-  6        146,504            1,032            1,024             8            0
-  7        147,536                0                0             0            0
+  5        146,480            1,056            1,028            28            0
+  6        147,512               24                4            20            0

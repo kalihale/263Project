@@ -159,7 +159,7 @@ int main(int argc, const char *argv[]) {
 //        j = dist(mt);
 //    }
 //
-//    Sorts<int>::quickSortPivotFirst(arr, 1000, 0, comparisons);
+//    QuickSort::quickSortPivotFirst(arr, 1000, 0, comparisons);
 
     delete[] comparisons;
 }
