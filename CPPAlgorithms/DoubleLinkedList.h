@@ -165,7 +165,7 @@ public:
             this->head = this->head->getNext();
             this->head->setPrevious(nullptr);
             T val = ptr->getValue();
-            free(ptr);
+            delete ptr;
             return val;
         }
         else if(index == 0 && size() == 1) {
@@ -173,7 +173,7 @@ public:
             T val = this->head->getValue();
             this->head = nullptr;
             this->tail = nullptr;
-            free(ptr);
+            delete ptr;
             return val;
         }
         else if(index == size() - 1) {
@@ -181,7 +181,7 @@ public:
             this->tail = this->tail->getPrevious();
             this->tail->setNext(nullptr);
             T val = ptr->getValue();
-            free(ptr);
+            delete ptr;
             return val;
         }
         else {
@@ -192,7 +192,7 @@ public:
             ptr->getPrevious()->setNext(ptr->getNext());
             ptr->getNext()->setPrevious(ptr->getPrevious());
             T val = ptr->getValue();
-            free(ptr);
+            delete ptr;
             return val;
         }
     }
@@ -222,7 +222,7 @@ public:
         newNode->getNext()->setPrevious(newNode);
         newNode->getPrevious()->setNext(newNode);
         T val = ptr->getValue();
-        free(ptr);
+        delete ptr;
         return val;
     }
 

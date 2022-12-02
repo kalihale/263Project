@@ -186,7 +186,7 @@ public:
             list[i] = result[indexC];
             indexC++;
         }
-        free(result);
+        delete[] result;
         return count;
     };
 

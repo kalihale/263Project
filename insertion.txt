@@ -1,0 +1,67 @@
+--------------------------------------------------------------------------------
+Command:            ./quick
+Massif arguments:   (none)
+ms_print arguments: massif.out.9965
+--------------------------------------------------------------------------------
+
+
+    KB
+72.04^                                                                       #
+     |:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::#
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+     |:                                                                      #
+   0 +----------------------------------------------------------------------->Mi
+     0                                                                   536.1
+
+Number of snapshots: 8
+ Detailed snapshots: [4 (peak)]
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1      2,277,913           72,712           72,704             8            0
+  2      2,393,149           72,736           72,708            28            0
+  3    562,075,521           73,768           73,732            36            0
+  4    562,092,208           73,768           73,732            36            0
+99.95% (73,732B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->98.56% (72,704B) 0x4910979: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+| ->98.56% (72,704B) 0x400647D: call_init.part.0 (dl-init.c:70)
+|   ->98.56% (72,704B) 0x4006567: call_init (dl-init.c:33)
+|     ->98.56% (72,704B) 0x4006567: _dl_init (dl-init.c:117)
+|       ->98.56% (72,704B) 0x40202E9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+|         
+->01.39% (1,024B) 0x4B0EC23: _IO_file_doallocate (filedoalloc.c:101)
+| ->01.39% (1,024B) 0x4B1DD5F: _IO_doallocbuf (genops.c:347)
+|   ->01.39% (1,024B) 0x4B1CFDF: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:744)
+|     ->01.39% (1,024B) 0x4B1B754: _IO_new_file_xsputn (fileops.c:1243)
+|       ->01.39% (1,024B) 0x4B1B754: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+|         ->01.39% (1,024B) 0x4B10056: fwrite (iofwrite.c:39)
+|           ->01.39% (1,024B) 0x49A2B34: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+|             ->01.39% (1,024B) 0x49A2E8A: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+|               ->01.39% (1,024B) 0x109433: main (main.cpp:119)
+|                 
+->00.01% (4B) in 1+ places, all below ms_print's threshold (01.00%)
+
+--------------------------------------------------------------------------------
+  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  5    562,092,208           73,744           73,728            16            0
+  6    562,102,778            1,032            1,024             8            0
+  7    562,103,882                0                0             0            0

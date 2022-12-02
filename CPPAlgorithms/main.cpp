@@ -3,11 +3,18 @@
 //
 
 #include <iostream>
-#include <cstdlib>
+//#include <cstdlib>
 #include <chrono>
-#include <sys/time.h>
-#include <ctime>
-#include "Sorts.h"
+//#include <sys/time.h>
+//#include <ctime>
+#include <random>
+//#include "Sorts.h"
+//#include "RadixSort.h"
+//#include "BubbleSort.h"
+//#include "InsertionSort.h"
+//#include "ShellSort.h"
+//#include "MergeSort.h"
+#include "QuickSort.h"
 
 using std::cout; using std::endl;
 using std::chrono::duration_cast;
@@ -34,7 +41,7 @@ int main(int argc, const char *argv[]) {
 //        }
 //
 //        startTime = std::chrono::high_resolution_clock::now();
-//        Sorts<int>::bubbleSort(arr, LEN);
+//        BubbleSort::bubbleSort(arr, LEN);
 //        endTime = std::chrono::high_resolution_clock::now();
 //        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
 //    }
@@ -49,13 +56,13 @@ int main(int argc, const char *argv[]) {
 //        }
 //
 //        startTime = std::chrono::high_resolution_clock::now();
-//        Sorts<int>::insertionSort(arr, 1000);
+//        InsertionSort::insertionSort(arr, 1000);
 //        endTime = std::chrono::high_resolution_clock::now();
 //        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
 //    }
 //
 //    std::cout << "InsertionSort Average Time: " << (double)totalTime / RUNS << std::endl;
-//
+
 //    // ／(^ㅅ^)＼ ShellSort Times
 //    totalTime = 0;
 //    for(int i = 0; i < RUNS; ++i) {
@@ -64,30 +71,30 @@ int main(int argc, const char *argv[]) {
 //        }
 //
 //        startTime = std::chrono::high_resolution_clock::now();
-//        Sorts<int>::shellSort(arr, LEN);
+//        ShellSort::shellSort(arr, LEN);
 //        endTime = std::chrono::high_resolution_clock::now();
 //        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
 //    }
 //
 //    std::cout << "ShellSort Average Time: " << (double)totalTime / RUNS << std::endl;
 
-    // ／(^ㅅ^)＼ RadixSort Times
-    totalTime = 0;
-    for(int i = 0; i < RUNS; ++i) {
-        for(int &j: arr) {
-            j = dist(mt);
-        }
-
-        startTime = std::chrono::high_resolution_clock::now();
-        Sorts<int>::radixSort(arr, 1000, 4);
-        endTime = std::chrono::high_resolution_clock::now();
-        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
-    }
-
-    std::cout << "RadixSort Average Time: " << (double)totalTime / RUNS << std::endl;
-    for(int i = 0; i < 1000; ++i) {
-        std::cout << arr[i] << std::endl;
-    }
+//    // ／(^ㅅ^)＼ RadixSort Times
+//    totalTime = 0;
+//    for(int i = 0; i < RUNS; ++i) {
+//        for(int &j: arr) {
+//            j = dist(mt);
+//        }
+//
+//        startTime = std::chrono::high_resolution_clock::now();
+//        RadixSort<int>::radixSort(arr, 1000, 4);
+//        endTime = std::chrono::high_resolution_clock::now();
+//        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+//    }
+//
+//    std::cout << "RadixSort Average Time: " << (double)totalTime / RUNS << std::endl;
+//    for(int i = 0; i < 1000; ++i) {
+//        std::cout << arr[i] << std::endl;
+//    }
 
 //    // ／(^ㅅ^)＼ MergeSort Times
 //    totalTime = 0;
@@ -97,28 +104,32 @@ int main(int argc, const char *argv[]) {
 //        }
 //
 //        startTime = std::chrono::high_resolution_clock::now();
-//        Sorts<int>::mergeSort(arr, LEN, 0, LEN);
+//        int* count = 0;
+//        MergeSort::mergeSort(arr, LEN, 0, LEN, count);
 //        endTime = std::chrono::high_resolution_clock::now();
 //        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
 //    }
 //
 //    std::cout << "MergeSort Average Time: " << (double)totalTime / RUNS << std::endl;
-//
-//    // ／(^ㅅ^)＼ QuickSort Times
-//    totalTime = 0;
-//    for(int i = 0; i < RUNS; ++i) {
-//        for(int &j: arr) {
-//             j = dist(mt);
-//        }
-//        comparisons[0] = 0;
-//
-//        startTime = std::chrono::high_resolution_clock::now();
-//        Sorts<int>::quickSortPivotFirst(arr, 0, LEN, comparisons);
-//        endTime = std::chrono::high_resolution_clock::now();
-//        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+//    for(int i = 0; i < 1000; ++i) {
+//        std::cout << arr[i] << std::endl;
 //    }
-//
-//    std::cout << "QuickSort Average Time: " << (double)totalTime / RUNS << std::endl;
+
+    // ／(^ㅅ^)＼ QuickSort Times
+    totalTime = 0;
+    for(int i = 0; i < RUNS; ++i) {
+        for(int &j: arr) {
+             j = dist(mt);
+        }
+        comparisons[0] = 0;
+
+        startTime = std::chrono::high_resolution_clock::now();
+        QuickSort::quickSortPivotFirst(arr, 0, LEN, comparisons);
+        endTime = std::chrono::high_resolution_clock::now();
+        totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
+    }
+
+    std::cout << "QuickSort Average Time: " << (double)totalTime / RUNS << std::endl;
 
 //        for(int &j: arr) {
 //            j = dist(mt);

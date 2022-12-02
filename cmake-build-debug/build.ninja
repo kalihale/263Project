@@ -49,20 +49,6 @@ cmake_ninja_workdir = /home/kali/CLionProjects/263Project/cmake-build-debug/
 
 build cmake_object_order_depends_target_263Project: phony || CMakeFiles/263Project.dir
 
-build CMakeFiles/263Project.dir/CPPAlgorithms/DoubleLinkedList.cpp.o: CXX_COMPILER__263Project_Debug /home/kali/CLionProjects/263Project/CPPAlgorithms/DoubleLinkedList.cpp || cmake_object_order_depends_target_263Project
-  DEP_FILE = CMakeFiles/263Project.dir/CPPAlgorithms/DoubleLinkedList.cpp.o.d
-  FLAGS = -g -std=gnu++14
-  INCLUDES = -I/home/kali/CLionProjects/263Project/CPPAlgorithms
-  OBJECT_DIR = CMakeFiles/263Project.dir
-  OBJECT_FILE_DIR = CMakeFiles/263Project.dir/CPPAlgorithms
-
-build CMakeFiles/263Project.dir/CPPAlgorithms/LLBase.cpp.o: CXX_COMPILER__263Project_Debug /home/kali/CLionProjects/263Project/CPPAlgorithms/LLBase.cpp || cmake_object_order_depends_target_263Project
-  DEP_FILE = CMakeFiles/263Project.dir/CPPAlgorithms/LLBase.cpp.o.d
-  FLAGS = -g -std=gnu++14
-  INCLUDES = -I/home/kali/CLionProjects/263Project/CPPAlgorithms
-  OBJECT_DIR = CMakeFiles/263Project.dir
-  OBJECT_FILE_DIR = CMakeFiles/263Project.dir/CPPAlgorithms
-
 build CMakeFiles/263Project.dir/CPPAlgorithms/main.cpp.o: CXX_COMPILER__263Project_Debug /home/kali/CLionProjects/263Project/CPPAlgorithms/main.cpp || cmake_object_order_depends_target_263Project
   DEP_FILE = CMakeFiles/263Project.dir/CPPAlgorithms/main.cpp.o.d
   FLAGS = -g -std=gnu++14
@@ -78,7 +64,7 @@ build CMakeFiles/263Project.dir/CPPAlgorithms/main.cpp.o: CXX_COMPILER__263Proje
 #############################################
 # Link the executable 263Project
 
-build 263Project: CXX_EXECUTABLE_LINKER__263Project_Debug CMakeFiles/263Project.dir/CPPAlgorithms/DoubleLinkedList.cpp.o CMakeFiles/263Project.dir/CPPAlgorithms/LLBase.cpp.o CMakeFiles/263Project.dir/CPPAlgorithms/main.cpp.o
+build 263Project: CXX_EXECUTABLE_LINKER__263Project_Debug CMakeFiles/263Project.dir/CPPAlgorithms/main.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/263Project.dir
   POST_BUILD = :
