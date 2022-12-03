@@ -20,9 +20,11 @@ Java, C++, and Python are three of the five most popular programming languages [
 
 ## Profiling Instructions
 
+**All commands assume you are in the "263Project" folder.**
+
 ### Python
 
-Make sure you have the `cProfiler` and `memory-profiler` Python libraries installed
+Make sure you have the `cProfiler` and `memory-profiler` Python libraries installed.
 
 #### Run Time Profiler
 1. Make sure all in instances of `from memory_profiler import profile` and `@profile` are commented out in `./PythonAlgorithms/*.py`
@@ -44,3 +46,19 @@ Make sure you have the `cProfiler` and `memory-profiler` Python libraries instal
 2. Open the saved snapshot for each algorithm and go the `call tree` tab
 3. On the `Show` dropdown menu on the upper right, select `Memory Allocation`
 4. Search for the `main` method
+
+### C++
+
+#### Run Time Profiler
+1. Compile with `g++ -O3 -o <programName> ./CPPAlgorithms/test<algorithm>Sort.cpp`
+2. Run with `./<outputName>`
+3. Average runtime will output on commandline
+
+#### Memory Profiler
+1. Install Valgrind Massif
+2. Compile with `g++ -O3 -o <programName> ./CPPAlgorithms/test<algorithm>Sort.cpp`
+3. Run `valgrind --tool=massif --massif-out-file=<massifFile> <programName>`
+4. Run `ms_print <massifFile> > <outputfile>.txt`
+   - The output will be saved to `<outputfile>.txt` and will show the graph of memory usage over time
+   - Line 33 will be labelled "Detailed snapshots" and will have a list of snapshot numbers. One of them will be labelled "(peak)" - this is the snapshot which recorded the peak memory usage
+   - Scroll down to find that snapshot and find the total amount of memory in use in bytes and the useful-heap in bytes
