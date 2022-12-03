@@ -18,3 +18,29 @@ Java, C++, and Python are three of the five most popular programming languages [
 * [IntelliJ profiler tutorial](https://www.youtube.com/watch?v=OQcyAtukps4)
 
 
+## Profiling Instructions
+
+### Python
+
+Make sure you have the `cProfiler` and `memory-profiler` Python libraries installed
+
+#### Run Time Profiler
+1. Make sure all in instances of `from memory_profiler import profile` and `@profile` are commented out in `./PythonAlgorithms/*.py`
+2. Run `./PythonAlgorithms/run_time.py` to obtain the times for 100 runs for each algorithim
+3. Run `./PythonAlgorithms/outputs/stats_averager.py` to obtain the average run time for each algorithm. Result will be stored in `./PythonAlgorithms/outputs/runtimes.csv`
+
+#### Memory Profiler
+1. Make sure all in instances of `from memory_profiler import profile` and `@profile` are **uncommented** out in `./PythonAlgorithms/*.py`
+2. Run `./PythonAlgorithms/mem_test.py`
+3. Memory usage files for each algorithm will be store in `./PythonAlgorithms/outputs/MemoryOutputs/<algorithm>.py.dat`. Search for the largest value
+
+### Java
+
+#### Run Time Profiler
+1. Run `./JavaAlgorithms/<algorithm>Test.java` to obtain an average runtime value as a program output
+
+#### Memory Profiler
+1. Run each test file, `./JavaAlgorithms/<algorithm>Test.java`, with the JetBrains profiler in their Intelij IDEA IDE
+2. Open the saved snapshot for each algorithm and go the `call tree` tab
+3. On the `Show` dropdown menu on the upper right, select `Memory Allocation`
+4. Search for the `main` method
