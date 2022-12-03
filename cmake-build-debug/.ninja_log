@@ -1,5 +1,3 @@
 # ninja log v5
 1	244	1669419736673900335	CMakeFiles/263Project.dir/CPPAlgorithms/main.cpp.o	20ef60886ac3e189
 244	282	1669419736713900481	263Project	32b8e4a1c4c1ca05
-1	139	1669407763735440506	CMakeFiles/263Project.dir/CPPAlgorithms/DoubleLinkedList.cpp.o	8ba2db6cfd2b622b
-0	106	1669407763703440282	CMakeFiles/263Project.dir/CPPAlgorithms/LLBase.cpp.o	9454a0c360d417fb

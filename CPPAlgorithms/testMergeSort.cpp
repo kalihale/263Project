@@ -9,7 +9,7 @@
 
 using std::cout; using std::endl;
 using std::chrono::duration_cast;
-using std::chrono::system_clock;
+using std::chrono::steady_clock;
 
 int main(int argc, const char *argv[]) {
     const int RUNS = 1000;
@@ -20,8 +20,8 @@ int main(int argc, const char *argv[]) {
     std::uniform_int_distribution<int> dist(0, LEN);
 
     long totalTime;
-    std::chrono::time_point<system_clock, system_clock::duration> startTime;
-    std::chrono::time_point<system_clock, system_clock::duration> endTime;
+    std::chrono::time_point<steady_clock, steady_clock::duration> startTime;
+    std::chrono::time_point<steady_clock, steady_clock::duration> endTime;
 
     // ／(^ㅅ^)＼ MergeSort Times
     totalTime = 0;
@@ -30,10 +30,10 @@ int main(int argc, const char *argv[]) {
             j = dist(mt);
         }
 
-        startTime = std::chrono::high_resolution_clock::now();
+        startTime = std::chrono::steady_clock::now();
         int* count = 0;
         MergeSort::mergeSort(arr, LEN, 0, LEN, count);
-        endTime = std::chrono::high_resolution_clock::now();
+        endTime = std::chrono::steady_clock::now();
         totalTime += std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count();
     }
 
