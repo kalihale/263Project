@@ -23,7 +23,7 @@ public class QuickSortTest {
             toSort = CommonUtils.generateRandomIntArray(0, 1000);
 
             startTime = System.currentTimeMillis();
-            MergeQuickSorts.quickSortPivotFirst(toSort, 0, toSort.length - 1, comparisons);
+            QuickSort.quickSortPivotFirst(toSort, 0, toSort.length - 1, comparisons);
             endTime = System.currentTimeMillis();
 
             totalTime += (endTime - startTime);

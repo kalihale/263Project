@@ -21,7 +21,7 @@ public class MergeSortTest {
             toSort = CommonUtils.generateRandomIntArray(0, 1000);
 
             startTime = System.currentTimeMillis();
-            MergeQuickSorts.mergeSort(toSort, 0, toSort.length - 1);
+            MergeSort.mergeSort(toSort, 0, toSort.length - 1);
             endTime = System.currentTimeMillis();
 
             totalTime += (endTime - startTime);
