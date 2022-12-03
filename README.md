@@ -10,7 +10,7 @@ Java, C++, and Python are three of the five most popular programming languages [
     * CPU: AMD Ryzen 5 5600 (x86-64, 6-Core, 12-Thread, Base Clock: 3.5GHz, no iGPU)
     * Memory: 32 GB DDR4
     * GPU: Nvidia RTX 3060
-    * OS: WSL2
+    * OS: Pop!_OS 22.04 LTS (Based on Ubuntu 22.04 LTS)
     
     
 ## Resources
